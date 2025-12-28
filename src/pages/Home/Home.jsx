@@ -44,7 +44,7 @@ const Home = () => {
           {/* Card 1 */}
           <div className="product-card">
             <img
-              src="https://res.cloudinary.com/dzqwfm6ra/image/upload/v1766915459/waahyaarImg/pgfhgiiixcmriucmzv1x.png"
+              src="https://res.cloudinary.com/dzqwfm6ra/image/upload/v1766921988/case-and-cover_zgxzvt.png"
               alt="Product"
             />
             <h3>Pink Silicone Case</h3>
@@ -55,7 +55,7 @@ const Home = () => {
           {/* Card 2 */}
           <div className="product-card">
             <img
-              src="https://res.cloudinary.com/dzqwfm6ra/image/upload/v1766915459/waahyaarImg/pgfhgiiixcmriucmzv1x.png"
+              src="https://res.cloudinary.com/dzqwfm6ra/image/upload/v1766921988/case-and-cover_zgxzvt.png"
               alt="Product"
             />
             <h3>Wireless Earbuds</h3>
@@ -66,7 +66,7 @@ const Home = () => {
           {/* Card 3 */}
           <div className="product-card">
             <img
-              src="https://res.cloudinary.com/dzqwfm6ra/image/upload/v1766915459/waahyaarImg/pgfhgiiixcmriucmzv1x.png"
+              src="https://res.cloudinary.com/dzqwfm6ra/image/upload/v1766921988/case-and-cover_zgxzvt.png"
               alt="Product"
             />
             <h3>Fast Charger</h3>
