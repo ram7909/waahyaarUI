@@ -1,0 +1,79 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  background-color: var(--bg-nav) !important;
+}
+
+.header .logo {
+  color: var(--logo-color);
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.header .nav, .header .nav-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.header .nav a {
+  color: var(--nav-item);
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.header .nav-icons .icon, .header .nav-icons .menu-icon{
+  color: var(--logo-color);
+  cursor: pointer;
+}
+
+.header .nav-icons .menu-icon{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header .nav {
+    position: absolute;
+    top: 61px;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-nav);
+    flex-direction: column;
+    gap: 20px;
+    padding: 22px 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--logo-color);
+
+    /* Ultra smooth animation */
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+    transition:
+      transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.35s ease-in-out;
+  }
+
+  .header .nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .header .nav a {
+    font-size: 16px;
+  }
+
+  .header .nav-icons .menu-icon {
+    display: block;
+    font-size: 22px;
+  }
+}
