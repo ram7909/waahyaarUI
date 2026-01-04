@@ -14,9 +14,16 @@
 }
 
 .footer-logo {
-  font-family: "Playfair Display", serif;
-  font-size: 26px;
-  color: var(--logo-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 150px;
+}
+
+.footer-logo img{
+  height: 100%;
+  width: 100%;
 }
 
 .footer-text {
@@ -72,5 +79,12 @@
 
   .social-icons {
     justify-content: center;
+  }
+
+  .footer-logo-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 }

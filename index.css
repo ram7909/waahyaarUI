@@ -8,11 +8,12 @@
   --logo-color : #463b34;
   --nav-item : #463b34cc;
   --btn-color: #b6915d;
+  --body-color: #f5f2ef;
 }
 
 body{
-  background: #f5f2ef !important;
-  background-color: #f5f2ef !important;
+  background: var(--body-color) !important;
+  background-color: var(--body-color) !important;
 }
 
 body::-webkit-scrollbar{

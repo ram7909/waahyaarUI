@@ -13,8 +13,8 @@ const Footer = () => {
       <div className="footer-container">
 
         {/* Brand */}
-        <div className="footer-col">
-          <h2 className="footer-logo">WaahYaar</h2>
+        <div className="footer-col footer-logo-col">
+          <div className="footer-logo"><img src="/waahYaarLogo.png" alt="logo" /></div>
           <p className="footer-text">
             Cute & premium mobile accessories made just for you 💖
           </p>
