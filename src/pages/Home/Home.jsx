@@ -16,7 +16,7 @@ const Home = () => {
         <div className="hero-content">
           <h1>{home.bannerTitle}</h1>
           <p>{home.bannerSubtitle}</p>
-          <button className="hero-btn">Shop Now</button>
+          <a href='/product' className="hero-btn">Shop Now</a>
         </div>
       </section>
 
@@ -42,7 +42,7 @@ const Home = () => {
 
         <div className="best-seller-grid">
           {/* Card 1 */}
-          <div className="product-card">
+          <div className="best-seller-product-card">
             <img
               src="https://res.cloudinary.com/dzqwfm6ra/image/upload/v1766921988/case-and-cover_zgxzvt.png"
               alt="Product"
@@ -53,7 +53,7 @@ const Home = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="product-card">
+          <div className="best-seller-product-card">
             <img
               src="https://res.cloudinary.com/dzqwfm6ra/image/upload/v1766921988/case-and-cover_zgxzvt.png"
               alt="Product"
@@ -64,7 +64,7 @@ const Home = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="product-card">
+          <div className="best-seller-product-card">
             <img
               src="https://res.cloudinary.com/dzqwfm6ra/image/upload/v1766921988/case-and-cover_zgxzvt.png"
               alt="Product"

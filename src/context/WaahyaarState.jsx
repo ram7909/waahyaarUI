@@ -7,6 +7,7 @@ const WaahyaarState = (props) => {
     const url = "https://waahyaarapi.onrender.com/api";
     const [home, setHome] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [products, setProducts] = useState([]);
     
     // Home Page Detail
     const LoadBanner = async () => {
@@ -28,17 +29,28 @@ const WaahyaarState = (props) => {
                 "Content-Type": "application/json"
             }
         });
-        console.log(api.data);
+
         setCategories(api.data);
+    }
+
+    // Load All Product
+    const LoadProducts = async () =>{
+        const api = await axios.get(`${url}/products`,{
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+        setProducts(api.data);
     }
 
     useEffect(() => {
         LoadBanner();
         LoadCategories();
+        LoadProducts();
     }, []) 
 
     return (
-        <WaahyaarContext.Provider value={{url, home, categories}}>
+        <WaahyaarContext.Provider value={{url, home, categories, products}}>
             {props.children}
         </WaahyaarContext.Provider>
     )

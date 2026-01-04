@@ -40,14 +40,14 @@ const Header = () => {
   return (
     <header className="header" ref={headerRef}>
 
-      <div className="logo">
+      <a href="/" className="logo">
         <img src="/waahYaarLogo.png" alt="Logo" />
-      </div>
+      </a>
 
       {/* Menu */}
       <nav className={`nav ${menuOpen ? "active" : ""}`}>
         <a href="/" onClick={() => setMenuOpen(false)}>Home</a>
-        <a href="/" onClick={() => setMenuOpen(false)}>Products</a>
+        <a href="/product" onClick={() => setMenuOpen(false)}>Products</a>
         <a onClick={() => scrollToSection("about")}>About Us</a>
         <a onClick={() => scrollToSection("contact")}>Contact Us</a>
       </nav>
