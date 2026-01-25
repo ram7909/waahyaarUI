@@ -1,0 +1,114 @@
+/* LOGIN PAGE */
+.box {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* CONTAINER */
+.loginContainer {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--container-color);
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+/* HEADING */
+.loginContainer h1 {
+  color: var(--logo-color);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+/* SUBTEXT */
+.loginContainer p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* FORM */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* INPUT GROUP */
+.loginForm .first {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* INPUTS */
+.loginForm input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #c5b2a8;
+  outline: none;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.loginForm input:focus {
+  border-color: var(--btn-color);
+  box-shadow: 0 0 0 2px rgba(182, 145, 93, 0.3);
+}
+
+/* BUTTON */
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--btn-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #a07c4a;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .loginContainer {
+    padding: 25px 20px;
+  }
+
+  .loginContainer h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loginContainer {
+    padding: 20px 16px;
+  }
+
+  .loginContainer p {
+    font-size: 13px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}

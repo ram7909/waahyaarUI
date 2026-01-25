@@ -1,0 +1,152 @@
+.checkout-container {
+    box-sizing: border-box;
+    width: 100vw;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 25px;
+    background-color: #b6c7ae4d;
+}
+
+.checkout-container h2 {
+    padding-bottom: 10px;
+    font-family: "Playfair Display", serif !important;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.checkout-container .checkout-left {
+    width: 60%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.checkout-container .checkout-right {
+    width: 40%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.checkout-container .orderForm {
+    padding: 20px;
+}
+
+.checkout-container .orderForm .formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.checkout-container .orderForm .formGroup label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+}
+
+.checkout-container .orderForm .formGroup input,
+.checkout-container .orderForm .formGroup textarea {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+}
+
+.checkout-container .orderForm .qtyBox label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+}
+
+.checkout-container .orderForm .qtyBox input {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    width: 80px;
+}
+
+.checkout-container .orderForm .qtyBox .qtyControl {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 3px;
+    margin-top: 6px;
+}
+
+.checkout-container .orderForm .qtyBox .btnQty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+
+.checkout-container .btnCheckout {
+    padding: 8px 18px;
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: 0.3s ease;
+    margin-top: 15px;
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.product-details img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.price-row.total {
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-top: 1px solid #ddd;
+    padding-top: 8px;
+}
+
+
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .checkout-container .checkout-left,
+    .checkout-container .checkout-right {
+        width: 100%;
+    }
+
+    .checkout-container .orderForm {
+        padding: 10px;
+    }
+
+    .checkout-container .orderForm .qtyBox input {
+        width: 60px;
+    }
+
+    .checkout-container .orderForm .qtyBox .btnQty {
+        width: 35px;
+    }
+}

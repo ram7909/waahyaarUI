@@ -1,0 +1,458 @@
+.adminNav {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 65px;
+    padding: 5px 10px;
+}
+
+.adminNav .adminNav-Left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.adminNav .adminNav-Left .brandLogo {
+    height: 100%;
+    width: 60px;
+    overflow: hidden;
+}
+
+.adminNav .adminNav-Left .brandLogo img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.adminNav .adminNav-Left p {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* NAV RIGHT BUTTONS */
+.adminNav-Right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.btnLogout {
+    background: var(--btn-color);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 12px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btnToggle {
+    color: var(--btn-color);
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* SIDEBAR OVERLAY */
+.sidebarOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    background: var(--container-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.sidebarOverlay.open {
+    transform: translateX(0);
+}
+
+/* SIDEBAR */
+.adminSidebar {
+    margin-top: 65px;
+    display: flex;
+    flex-direction: column;
+}
+
+.adminSidebar-Item {
+    padding: 15px 20px;
+    cursor: pointer;
+    color: var(--nav-item);
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.adminSidebar-Item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.adminSidebar-Item.active {
+    background: var(--btn-color);
+    color: white;
+}
+
+/* MAIN CONTENT */
+.adminMainContent {
+    padding: 10px;
+}
+
+.adminContainer {
+    max-height: 80vh;
+    overflow-y: auto;
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: var(--container-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-family: 'Playfair Display', serif;
+}
+
+.containerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.containerHeader .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* ====== Add Button ====== */
+.btnAdd {
+    background-color: var(--btn-color);
+    border: none;
+    padding: 8px 16px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* ====== Category List ====== */
+.list-of-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.list-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    /* light container contrast */
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Playfair Display', serif;
+}
+
+.list-items:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.list-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.list-img {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: var(--bg-nav);
+}
+
+.list-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.list-name {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ====== Buttons on Right ====== */
+.listRight {
+    display: flex;
+    gap: 10px;
+}
+
+.btnUpdate,
+.btnDelete {
+    padding: 5px 12px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.btnUpdate {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.btnUpdate:hover {
+    background-color: #45a049;
+}
+
+.btnDelete {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.btnDelete:hover {
+    background-color: #e53935;
+}
+
+/* ===== ADD CATEGORY MODAL ===== */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 15px;
+}
+
+.modalContent {
+    background-color: var(--container-color);
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Playfair Display', serif;
+    color: var(--text-color);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modalClose {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.modalClose:hover {
+    color: var(--btn-color);
+}
+
+.modalContent h3.formTitle {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.modalContent .formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.modalContent .formGroup label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+}
+
+.modalContent .formGroup input,.modalContent .formGroup select,.modalContent .formGroup textarea{
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+}
+
+.modalContent .formGroup input[type="text"],
+.modalContent .formGroup input[type="file"] {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+}
+
+.modalContent .formGroup input[type="text"]:focus,
+.modalContent .formGroup input[type="file"]:focus {
+    border-color: var(--btn-color);
+}
+
+.modalContent .formActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.modalContent .formActions .btnAdd {
+    padding: 8px 18px;
+    width: 50%;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.modalContent .formActions .btn[type="submit"] {
+    background-color: var(--btn-color);
+    color: #fff;
+}
+
+.modalContent .formActions .btn[type="submit"]:hover {
+    background-color: #a07a4d;
+}
+
+.modalContent .formActions .btnCancel {
+    width: 50%;
+    border: none;
+    border: 2px solid var(--btn-color);
+    color: var(--btn-color);
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modalContent .formActions .btnCancel:hover {
+    background-color: var(--btn-color);
+    color: white;
+}
+
+/* ===== IMAGE PREVIEW ===== */
+.previewWrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.imgPreview {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.searchbar{
+    margin: 5px 0px;
+}
+
+.searchInput {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .list-img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .list-name {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .list-items {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .listRight {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .list-items {
+        padding: 10px;
+    }
+
+    .list-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .listRight {
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .btnUpdate,
+    .btnDelete {
+        width: 100%;
+    }
+
+    .modalContent {
+        padding: 20px;
+    }
+
+    .modalContent h3.formTitle {
+        font-size: 1.4rem;
+    }
+
+    .modalContent .formGroup input[type="text"],
+    .modalContent .formGroup input[type="file"] {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .adminNav .adminNav-Left p {
+        display: none;
+    }
+}
