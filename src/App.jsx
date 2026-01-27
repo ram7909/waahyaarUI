@@ -13,6 +13,7 @@ import PrivateRoute from './pages/PrivateRoute';
 import Product from './pages/Product';
 import ProductDetail from './pages/ProductDetail';
 import Order from './pages/Order';
+import Category from './pages/Category';
 
 // Layout component for pages that should have Header/Footer
 const MainLayout = ({ children }) => (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path='/product' element={<MainLayout><Product /></MainLayout>} />
         <Route path='/product/:slug' element={<MainLayout><ProductDetail /></MainLayout>} />
         <Route path='/order/:slug' element={<MainLayout><Order /></MainLayout>} />
+        <Route path='/category/:id' element={<MainLayout><Category /></MainLayout>} />
 
         <Route path='/login' element={<Login />} />
         <Route path='/admin' element={

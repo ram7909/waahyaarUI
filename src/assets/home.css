@@ -1,7 +1,7 @@
 .hero-container {
     position: relative;
     width: 100%;
-    height: 90vh;
+    height: 565px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -142,6 +142,10 @@
     font-family: "Poppins", sans-serif;
 }
 
+.new-arrived-section{
+    background-color: #b6c7ae4d;
+}
+
 
 .about-section {
     padding: 60px 20px;
@@ -219,9 +223,11 @@
     margin-bottom: 12px;
 }
 
-.contact-details p {
+.contact-details p, .contact-details a {
     font-size: 15px;
     margin-bottom: 10px;
+    color: #333;
+    font-family: "Poppins", sans-serif;
 }
 
 /* Form */

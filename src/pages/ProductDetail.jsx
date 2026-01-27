@@ -27,16 +27,40 @@ const ProductDetail = () => {
 
   if (!product) return null;
 
+  const handlePrev = () => {
+    setActiveImage((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1
+    );
+  };
+
+  const handleNext = () => {
+    setActiveImage((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+
   return (
     <>
       <div className="product-detail">
         {/* Image Slider */}
         <div className="image-section">
-          <img
-            src={product.images[activeImage].url}
-            alt={product.title}
-            className="main-image"
-          />
+          <div className="image-wrapper">
+            <button className="nav-btn left" onClick={handlePrev}>
+              ‹
+            </button>
+
+            <img
+              src={product.images[activeImage].url}
+              alt={product.title}
+              className="main-image"
+            />
+
+            <button className="nav-btn right" onClick={handleNext}>
+              ›
+            </button>
+          </div>
+
 
           <div className="thumbnail-row">
             {product.images.map((img, index) => (

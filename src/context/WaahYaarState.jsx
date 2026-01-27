@@ -3,14 +3,15 @@ import axios from 'axios';
 import WaahYaarContext from './WaahYaarContext';
 
 const WaahYaarState = (props) => {
-  const apiUrl = "https://waahyaarapis.onrender.com/api";
-  //const apiUrl = "http://localhost:5000/api";
+  //const apiUrl = "https://waahyaarapis.onrender.com/api";
+  const apiUrl = "http://localhost:5000/api";
 
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
   const [heros, setHeros] = useState([]);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const [newProducts, setNewProducts] = useState([]);
 
   // Load auth once
   useEffect(() => {
@@ -26,6 +27,7 @@ const WaahYaarState = (props) => {
     loadBanner();
     loadCategories();
     loadProducts();
+    loadNewArrived();
   }, []);
 
   const loadBanner = async () => {
@@ -332,7 +334,7 @@ const WaahYaarState = (props) => {
         }
       );
 
-      return api.data;
+      setNewProducts(api.data);
     } catch (error) {
       return { success: false, message: "Product of new arrival failed" };
     }
@@ -350,10 +352,20 @@ const WaahYaarState = (props) => {
     }
   };
 
+  const loadCategoriesById = async (id) => {
+    try {
+      const api = await axios.get(`${apiUrl}/category/${id}`);
+
+      return api.data;
+    } catch (error) {
+      console.error("Load Category By Id failed");
+    }
+  }
+
 
   return (
     <WaahYaarContext.Provider
-      value={{ loadBestSeller, loadNewArrived, login, logout, updateHero, postBuyNow, verifyToken, postCatgeory, putCategory, deleteCategory, postHero, putHero, deleteHero, postProduct, putProduct, deleteProduct, loadBanner, loadCategories, loadProducts, getProductBySlug,apiUrl, heros, isAuthenticated, token, categories, products }}
+      value={{ loadCategoriesById, loadBestSeller, loadNewArrived, login, logout, updateHero, postBuyNow, verifyToken, postCatgeory, putCategory, deleteCategory, postHero, putHero, deleteHero, postProduct, putProduct, deleteProduct, loadBanner, loadCategories, loadProducts, getProductBySlug, apiUrl, heros, isAuthenticated, token, categories, products, newProducts }}
     >
       {props.children}
     </WaahYaarContext.Provider>

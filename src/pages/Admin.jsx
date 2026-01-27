@@ -27,7 +27,7 @@ const Admin = () => {
 
   //================= MANAGE CONTENT =================
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [activeModule, setActiveModule] = useState('Dashboard');
+  const [activeModule, setActiveModule] = useState('Products');
 
   //================= LOGOUT ================
   const handleLogout = () => {
@@ -661,9 +661,7 @@ const Admin = () => {
       <div className={`sidebarOverlay ${isSidebarOpen ? 'open' : ''}`}>
         <div className="adminSidebar">
           {[
-            'Dashboard',
             'Products',
-            'Users',
             'Orders',
             'Change Hero Image',
             'Category',
@@ -685,8 +683,6 @@ const Admin = () => {
 
       {/* MAIN CONTENT */}
       <div className="adminMainContent">
-        {activeModule === 'Dashboard' && <h2>Dashboard Content</h2>}
-        {activeModule === 'Users' && <h2>Users Content</h2>}
         {activeModule === 'Orders' && <h2>Orders Content</h2>}
 
         {/* PRODUCT SECTION */}
@@ -716,6 +712,7 @@ const Admin = () => {
                         <img src={pr.images[0]?.url} alt={pr.title} />
                       </div>
                       <p className="list-name">{pr.title}</p>
+                      <p className="list-name">"{pr.stock}"</p>
                     </div>
 
                     <div className="listRight">

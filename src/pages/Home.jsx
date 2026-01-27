@@ -4,7 +4,7 @@ import WaahYaarContext from '../context/WaahYaarContext';
 import '../assets/home.css';
 
 const Home = () => {
-  const { heros, categories, loadBestSeller } = useContext(WaahYaarContext);
+  const { heros, categories, loadBestSeller, newProducts } = useContext(WaahYaarContext);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [bestSeller, setBestSeller] = useState([]);
   const navigate = useNavigate();
@@ -35,6 +35,8 @@ const Home = () => {
     fetchBestSeller();
   }, [loadBestSeller]);
 
+  const sixNewProducts = newProducts?.products?.slice(0, 9) || [];
+
   if (!heros?.heroes?.length) return null;
 
   return (
@@ -59,22 +61,48 @@ const Home = () => {
 
         <div className="category-scroll">
           {categories?.map((cat) => (
-            <div className="category-card" key={cat._id}>
+            <Link to={`/category/${cat._id}`} className="category-card" key={cat._id}>
               <div className="category-image">
                 <img src={cat.image} alt={cat.name} />
               </div>
               <p>{cat.name}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
       {/* BEST SELLER SECTION */}
-      <section className="best-seller-section">
+      <section id="best-seller" className="best-seller-section">
         <h2 className="section-title">Best Sellers</h2>
 
         <div className="best-seller-grid">
           {bestSeller.map((item) => (
+            <div
+              className="best-seller-product-card"
+              key={item._id}
+              onClick={() => navigate(`/product/${item.slug}`)}
+            >
+              <img src={item.images[0].url} alt={item.title} />
+              <h3>{item.title}</h3>
+              <div className="price">
+                ₹{item.price.toFixed(2)}
+                {item.discountPercent > 0 && (
+                  <span className="original-price">
+                    ₹{item.salePrice}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      {/* NEWLY ARRIVED SECTION */}
+      <section className="best-seller-section new-arrived-section">
+        <h2 className="section-title">New Arrivals</h2>
+
+        <div className="best-seller-grid">
+          {sixNewProducts.map((item) => (
             <div
               className="best-seller-product-card"
               key={item._id}
@@ -138,7 +166,7 @@ const Home = () => {
             <div className="contact-details">
               <p>📍 India</p>
               <p>📧 support@waahyaar.com</p>
-              <p>📞 +91 98765 43210</p>
+              <a href="tel:+918878071804">📞 +91 88780 71804</a>
             </div>
           </div>
 

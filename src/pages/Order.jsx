@@ -133,13 +133,25 @@ const Order = () => {
     rzp.open();
   };
 
-
   const increaseQty = () => {
-    setFormData(prev => ({
-      ...prev,
-      quantity: prev.quantity + 1
-    }));
+    setFormData(prev => {
+      if (prev.quantity >= maxStock) {
+        toast.error(`Only ${maxStock} item(s) available in stock`, {
+          position: "bottom-right",
+          autoClose: 1000,
+          theme: "dark",
+          transition: Bounce,
+        });
+        return prev;
+      }
+
+      return {
+        ...prev,
+        quantity: prev.quantity + 1
+      };
+    });
   };
+
 
   const decreaseQty = () => {
     setFormData(prev => ({
@@ -176,6 +188,7 @@ const Order = () => {
 
   const unitPrice = product.discountPercent > 0 ? product.salePrice : product.price;
 
+  const maxStock = product?.stock || 0;
   const totalPrice = unitPrice * formData.quantity;
 
 
@@ -189,37 +202,37 @@ const Order = () => {
 
             <div className="formGroup">
               <label>Full Name</label>
-              <input name="name" placeholder="Full Name"  onChange={handleChange} type="text" required />
+              <input name="name" placeholder="Full Name" onChange={handleChange} type="text" required />
             </div>
 
             <div className="formGroup">
               <label>Mobile Number</label>
-              <input name="mobile" placeholder="Mobile Number"  onChange={handleChange} type="number" required />
+              <input name="mobile" placeholder="Mobile Number" onChange={handleChange} type="number" required />
             </div>
 
             <div className="formGroup">
               <label>Email Address</label>
-              <input name="email" placeholder="Email (optional)"  onChange={handleChange} type="email" />
+              <input name="email" placeholder="Email (optional)" onChange={handleChange} type="email" />
             </div>
 
             <div className="formGroup">
               <label>Address</label>
-              <textarea name="address" placeholder="Address"  onChange={handleChange} required />
+              <textarea name="address" placeholder="Address" onChange={handleChange} required />
             </div>
 
             <div className="formGroup">
               <label>City</label>
-              <input name="city" placeholder="City"  onChange={handleChange} type="text" required />
+              <input name="city" placeholder="City" onChange={handleChange} type="text" required />
             </div>
 
             <div className="formGroup">
               <label>State</label>
-              <input name="state" placeholder="State"  onChange={handleChange} type="text" required />
+              <input name="state" placeholder="State" onChange={handleChange} type="text" required />
             </div>
 
             <div className="formGroup">
               <label>Pincode</label>
-              <input name="pincode" placeholder="Pincode"  onChange={handleChange} type="number" required />
+              <input name="pincode" placeholder="Pincode" onChange={handleChange} type="number" required />
             </div>
 
             <div className="qtyBox">
@@ -234,7 +247,7 @@ const Order = () => {
                   readOnly
                 />
 
-                <button type="button" className="btn btnQty" onClick={increaseQty}>+</button>
+                <button type="button" className="btn btnQty" onClick={increaseQty} disabled={!product || formData.quantity >= maxStock}>+</button>
               </div>
             </div>
           </form>
