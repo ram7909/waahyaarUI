@@ -335,6 +335,7 @@ const WaahYaarState = (props) => {
       );
 
       setNewProducts(api.data);
+      return api.data;
     } catch (error) {
       return { success: false, message: "Product of new arrival failed" };
     }
@@ -362,10 +363,99 @@ const WaahYaarState = (props) => {
     }
   }
 
+  // ===== NEW TOGGLE FUNCTIONS =====
+  const toggleNewArrival = async (productId) => {
+    try {
+      const api = await axios.patch(
+        `${apiUrl}/product/admin/${productId}/toggle-new-arrival`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      return api.data;
+    } catch (error) {
+      return { success: false, message: "Toggle New Arrival failed" };
+    }
+  };
+
+  const toggleBestSeller = async (productId) => {
+    try {
+      const api = await axios.patch(
+        `${apiUrl}/product/admin/${productId}/toggle-best-seller`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      return api.data;
+    } catch (error) {
+      return { success: false, message: "Toggle Best Seller failed" };
+    }
+  };
+
+  const getDeviceModels = async (productId) => {
+    try {
+      const api = await axios.get(`${apiUrl}/product/${productId}/device-models`);
+      return api.data;
+    } catch (error) {
+      return { success: false, message: "Get Device Models failed" };
+    }
+  };
+
+  const getColorsForDevice = async (productId, deviceModel) => {
+    try {
+      const api = await axios.get(`${apiUrl}/product/${productId}/device/${encodeURIComponent(deviceModel)}/colors`);
+      return api.data;
+    } catch (error) {
+      return { success: false, message: "Get Colors failed" };
+    }
+  };
 
   return (
     <WaahYaarContext.Provider
-      value={{ loadCategoriesById, loadBestSeller, loadNewArrived, login, logout, updateHero, postBuyNow, verifyToken, postCatgeory, putCategory, deleteCategory, postHero, putHero, deleteHero, postProduct, putProduct, deleteProduct, loadBanner, loadCategories, loadProducts, getProductBySlug, apiUrl, heros, isAuthenticated, token, categories, products, newProducts }}
+      value={{
+        loadCategoriesById,
+        loadBestSeller,
+        loadNewArrived,
+        login,
+        logout,
+        updateHero,
+        postBuyNow,
+        verifyToken,
+        postCatgeory,
+        putCategory,
+        deleteCategory,
+        postHero,
+        putHero,
+        deleteHero,
+        postProduct,
+        putProduct,
+        deleteProduct,
+        loadBanner,
+        loadCategories,
+        loadProducts,
+        getProductBySlug,
+        toggleNewArrival,
+        toggleBestSeller,
+        getDeviceModels,
+        getColorsForDevice,
+        apiUrl,
+        heros,
+        isAuthenticated,
+        token,
+        categories,
+        products,
+        newProducts
+      }}
     >
       {props.children}
     </WaahYaarContext.Provider>

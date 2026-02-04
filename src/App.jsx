@@ -14,6 +14,7 @@ import Product from './pages/Product';
 import ProductDetail from './pages/ProductDetail';
 import Order from './pages/Order';
 import Category from './pages/Category';
+import ScrollToTop from './components/ScrollToTop';
 
 // Layout component for pages that should have Header/Footer
 const MainLayout = ({ children }) => (
@@ -22,6 +23,7 @@ const MainLayout = ({ children }) => (
     {children}
     <Footer />
     <ScrollButton />
+    <ScrollToTop />
   </>
 );
 

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
-  FaHeart,
   FaBars,
   FaTimes,
   FaSearch,
@@ -15,12 +14,32 @@ const Header = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [loading, setLoading] = useState(false);
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
   const headerRef = useRef(null);
+
+  // ===== PRODUCT PREVIEW HELPER =====
+  const getProductPreview = (product) => {
+    // SIMPLE PRODUCT
+    if (product.productType === "simple") {
+      return {
+        price: product.price,
+        salePrice: product.salePrice,
+        image: product.images?.[0]?.url
+      };
+    }
+
+    // VARIANT PRODUCT
+    const firstVariant = product.variants?.[0];
+    const firstColor = firstVariant?.colors?.[0];
+
+    return {
+      price: firstColor?.price,
+      salePrice: firstColor?.salePrice,
+      image: product?.images?.[0]?.url
+    };
+  };
 
   const scrollToSection = (id) => {
     setMenuOpen(false);
@@ -30,7 +49,7 @@ const Header = () => {
     });
   };
 
-  // 👇 Close menu/search on outside click
+  // Close menu/search on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (headerRef.current && !headerRef.current.contains(e.target)) {
@@ -40,18 +59,16 @@ const Header = () => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
+    return () =>
       document.removeEventListener("mousedown", handleClickOutside);
-    };
   }, []);
 
+  // ===== SEARCH LOGIC =====
   useEffect(() => {
     if (!searchTerm.trim()) {
       setSearchResults([]);
       return;
     }
-    
-    setLoading(true);
 
     const delayDebounce = setTimeout(() => {
       const filteredProducts = products.filter((product) =>
@@ -61,22 +78,18 @@ const Header = () => {
       );
 
       setSearchResults(filteredProducts);
-      setLoading(false);
     }, 300);
 
-
     return () => clearTimeout(delayDebounce);
-  }, [searchTerm]);
-
+  }, [searchTerm, products]);
 
   return (
     <header className="header" ref={headerRef}>
-
       <Link to="/" className="logo">
         <img src="/waahYaarLogo.png" alt="Logo" />
       </Link>
 
-      {/* Menu */}
+      {/* NAV */}
       <nav className={`nav ${menuOpen ? "active" : ""}`}>
         <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
         <Link to="/product" onClick={() => setMenuOpen(false)}>Products</Link>
@@ -84,7 +97,7 @@ const Header = () => {
         <a onClick={() => scrollToSection("contact")}>Contact Us</a>
       </nav>
 
-      {/* Search */}
+      {/* SEARCH INPUT */}
       <div className={`search-box ${searchOpen ? "active" : ""}`}>
         <input
           type="text"
@@ -95,31 +108,37 @@ const Header = () => {
         />
       </div>
 
+      {/* SEARCH RESULTS */}
       {searchOpen && searchResults.length > 0 && (
         <div className="search-overlay">
-          {searchResults.map((product) => (
-            <Link
-              key={product._id}
-              to={`/product/${product.slug}`}
-              className="search-item"
-              onClick={() => {
-                setSearchOpen(false);
-                setSearchTerm("");
-                setSearchResults([]);
-              }}
-            >
-              <img src={product.images[0]?.url} alt={product.title} />
-              <div>
-                <p className="search-title">{product.title}</p>
-                <span className="search-price">₹{product.salePrice || product.price}</span>
-              </div>
-            </Link>
-          ))}
+          {searchResults.map((product) => {
+            const preview = getProductPreview(product);
+
+            return (
+              <Link
+                key={product._id}
+                to={`/product/${product.slug}`}
+                className="search-item"
+                onClick={() => {
+                  setSearchOpen(false);
+                  setSearchTerm("");
+                  setSearchResults([]);
+                }}
+              >
+                <img src={preview.image} alt={product.title} />
+                <div>
+                  <p className="search-title">{product.title}</p>
+                  <span className="search-price">
+                    ₹{preview.salePrice}
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       )}
 
-
-      {/* Icons */}
+      {/* ICONS */}
       <div className="nav-icons">
         <FaSearch
           className="icon search-icon"
@@ -146,7 +165,6 @@ const Header = () => {
           />
         )}
       </div>
-
     </header>
   );
 };

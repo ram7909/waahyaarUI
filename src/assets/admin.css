@@ -390,6 +390,350 @@
   width: 100%;
 }
 
+/* Additional CSS for Variant Product Forms */
+
+/* Variant Section Styling */
+.variantsSection {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.variantsSection h4 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.variantsSection h5 {
+  margin: 15px 0 10px 0;
+  color: #555;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Variant Block */
+.variantBlock {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  position: relative;
+}
+
+.variantBlock:hover {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+}
+
+/* Color Block */
+.colorBlock {
+  background: #f8f9fa;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  position: relative;
+}
+
+.colorBlock .formGroup {
+  margin-bottom: 10px;
+}
+
+.colorBlock .btnDelete {
+  margin-top: 10px;
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+/* Toggle Buttons for Best Seller / New Arrival */
+.btnToggle {
+  padding: 8px 15px;
+  margin: 0 5px;
+  border: 2px solid #6c757d;
+  background: white;
+  color: #6c757d;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btnToggle:hover {
+  background: #6c757d;
+  color: white;
+}
+
+.btnToggle.active {
+  background: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.btnToggle.active:hover {
+  background: #218838;
+  border-color: #1e7e34;
+}
+
+/* Feature Input Groups */
+.formGroup input[type="text"] + .btnDelete {
+  padding: 8px 12px;
+  min-width: auto;
+  margin-left: 10px;
+}
+
+/* Modal Content Scrollable */
+.modalContent {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .variantBlock,
+  .colorBlock {
+    padding: 15px;
+  }
+
+  .btnToggle {
+    padding: 6px 10px;
+    font-size: 12px;
+    margin: 3px;
+  }
+
+  .colorBlock .formGroup {
+    margin-bottom: 8px;
+  }
+}
+
+/* Color Preview Circle */
+.colorPreview {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* Product Type Badge */
+.productTypeBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.productTypeBadge.simple {
+  background: #17a2b8;
+  color: white;
+}
+
+.productTypeBadge.variant {
+  background: #6f42c1;
+  color: white;
+}
+
+/* Stock Status */
+.stockStatus {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.stockStatus.inStock {
+  background: #d4edda;
+  color: #155724;
+}
+
+.stockStatus.lowStock {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.stockStatus.outOfStock {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Enhanced List Items */
+.list-items .list-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.list-items .list-name {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+/* Button Groups */
+.listRight {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Form Actions */
+.formActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.formActions button {
+  flex: 1;
+}
+
+/* Image Preview Grid */
+.previewWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.imgPreview {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+/* Specification Inputs */
+.formGroup input[type="text"][placeholder="Brand"],
+.formGroup input[type="text"][placeholder="Material"],
+.formGroup input[type="text"][placeholder="Warranty"] {
+  margin-bottom: 10px;
+}
+
+/* Add Button Styles */
+.btnAdd {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btnAdd:hover {
+  background: #218838;
+}
+
+.btnUpdate {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btnUpdate:hover {
+  background: #0056b3;
+}
+
+.btnDelete {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btnDelete:hover {
+  background: #c82333;
+}
+
+.btnCancel {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btnCancel:hover {
+  background: #5a6268;
+}
+
+/* Scrollbar Styling */
+.modalContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+/* No Data Message */
+.noData {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 16px;
+}
+
+/* Error Message */
+.errorMessage {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 12px 20px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #f5c6cb;
+}
+
+/* Success Message */
+.successMessage {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px 20px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #c3e6cb;
+}
+
+
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
