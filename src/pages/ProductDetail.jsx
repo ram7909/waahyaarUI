@@ -30,12 +30,13 @@ const ProductDetail = () => {
 
         const allProductsRes = await loadProducts();
         if (allProductsRes?.success) {
+          console.log(allProductsRes.products);
           const filtered = allProductsRes.products.filter(
             (p) =>
-              p.category === prod.category && p._id !== prod._id
+              p.category._id === prod.category._id && p._id !== prod._id
           );
 
-          setRelatedProducts(filtered.slice(0, 4));
+          setRelatedProducts(filtered.slice(0, 6));
         }
       }
     };
@@ -255,7 +256,7 @@ const ProductDetail = () => {
 
       {relatedProducts.length > 0 && (
         <div className="related-product">
-          <h4>You Might Also Like</h4>
+          <h3>You Might Also Like</h3>
 
           <div className="related-grid">
             {relatedProducts.map((item) => {
@@ -268,7 +269,7 @@ const ProductDetail = () => {
                   onClick={() => navigate(`/product/${item.slug}`)}
                 >
                   <img src={preview.image} alt={item.title} />
-                  <h5>{item.title}</h5>
+                  <h4>{item.title}</h4>
 
                   <p className="related-price">
                     ₹{preview.salePrice?.toFixed(2)}
