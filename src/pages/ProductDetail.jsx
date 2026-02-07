@@ -126,6 +126,12 @@ const ProductDetail = () => {
         {/* IMAGE */}
         <div className="image-section">
           <div className="image-wrapper">
+            <button className="share-btn" onClick={handleShare}>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 64 64">
+                <path d="M 9 9 L 9 14 L 9 54 L 51 54 L 56 54 L 55 42 L 51 42 L 51 49.095703 L 13 50 L 13.900391 14 L 21 14 L 21 10 L 9 9 z M 44 9 L 44 17.072266 C 29.919275 17.731863 19 23.439669 19 44 L 23 44 C 23 32.732824 29.174448 25.875825 44 25.080078 L 44 33 L 56 20.5 L 44 9 z"></path>
+              </svg>
+            </button>
+
             <button
               className="nav-btn left"
               onClick={() =>
@@ -259,11 +265,6 @@ const ProductDetail = () => {
           >
             Buy Now
           </button>
-
-          <button className="share-btn" onClick={handleShare}>
-            Share Product
-          </button>
-
 
           {/* FEATURES */}
           {product.features?.length > 0 && (

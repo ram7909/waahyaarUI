@@ -51,6 +51,8 @@
   border: none;
   font-size: 28px;
   cursor: pointer;
+  color: black;
+  text-decoration: none;
 }
 
 .nav-btn.left {
@@ -59,6 +61,23 @@
 
 .nav-btn.right {
   right: 10px;
+}
+
+/* SHARE BUTTON */
+.share-btn {
+  position: absolute;
+  right: 10px;
+  top:10px;
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+}
+
+.share-btn:hover {
+  background: #f3f4f6;
 }
 
 /* INFO */
@@ -116,24 +135,7 @@
   text-transform: uppercase;
 }
 
-/* SHARE BUTTON */
-.share-btn {
-  margin-left: 10px;
-  font-size: 12px;
-  padding: 12px 24px;
-  border-radius: 50px;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  color: #111827;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  font-family: 'Poppins', sans-serif;
-}
 
-.share-btn:hover {
-  background: #f3f4f6;
-  transform: translateY(-1px);
-}
 
 @keyframes pulse {
 
@@ -169,6 +171,8 @@
   border: 1px solid #ccc;
   background: white;
   cursor: pointer;
+  color: black;
+  text-decoration: none;
 }
 
 .variant-btn.active {

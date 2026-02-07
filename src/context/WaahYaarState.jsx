@@ -7,7 +7,7 @@ const WaahYaarState = (props) => {
   //const apiUrl = "http://localhost:5000/api";
 
   const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
+  const [isAuthenticated, setIsAuthenticated] = useState(!localStorage.getItem("token"));
   const [heros, setHeros] = useState([]);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
