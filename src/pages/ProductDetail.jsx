@@ -14,6 +14,7 @@ const ProductDetail = () => {
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [showAllModels, setShowAllModels] = useState(false);
 
 
   useEffect(() => {
@@ -92,6 +93,32 @@ const ProductDetail = () => {
     };
   };
 
+  const MAX_MODELS = 6;
+
+  const visibleVariants =
+    product?.productType === "variant"
+      ? showAllModels
+        ? product.variants
+        : product.variants.slice(0, MAX_MODELS)
+      : [];
+
+  const handleShare = async () => {
+    const shareData = {
+      title: product.title,
+      text: `Check out this product: ${product.title}`,
+      url: window.location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(shareData.url);
+      }
+    } catch (error) {
+      console.error("Share failed:", error);
+    }
+  };
 
   return (
     <>
@@ -148,7 +175,7 @@ const ProductDetail = () => {
               <div className="variant-group">
                 <p className="variant-label">Choose Model</p>
                 <div className="model-buttons">
-                  {product.variants.map((v) => (
+                  {visibleVariants.map((v) => (
                     <button
                       key={v._id}
                       className={`variant-btn ${selectedVariant?._id === v._id ? "active" : ""
@@ -162,6 +189,17 @@ const ProductDetail = () => {
                       {v.deviceModel}
                     </button>
                   ))}
+                  {product.variants.length > MAX_MODELS && (
+                    <button
+                      className="show-more-btn"
+                      onClick={() => setShowAllModels(!showAllModels)}
+                    >
+                      {showAllModels
+                        ? "Show less"
+                        : `+${product.variants.length - MAX_MODELS} more models`}
+                    </button>
+                  )}
+
                 </div>
               </div>
 
@@ -222,6 +260,11 @@ const ProductDetail = () => {
             Buy Now
           </button>
 
+          <button className="share-btn" onClick={handleShare}>
+            Share Product
+          </button>
+
+
           {/* FEATURES */}
           {product.features?.length > 0 && (
             <div className="modern-section">
@@ -243,7 +286,7 @@ const ProductDetail = () => {
                   {Object.entries(product.specifications).map(([k, v]) =>
                     v ? (
                       <div key={k} className="spec-card">
-                        <span className="spec-label">{k}</span>
+                        <span className="spec-label">{k}: </span>
                         <span className="spec-value">{v}</span>
                       </div>
                     ) : null
@@ -269,14 +312,21 @@ const ProductDetail = () => {
                   onClick={() => navigate(`/product/${item.slug}`)}
                 >
                   <img src={preview.image} alt={item.title} />
-                  <h4>{item.title}</h4>
 
-                  <p className="related-price">
-                    ₹{preview.salePrice?.toFixed(2)}
-                    {preview.price > preview.salePrice && (
-                      <span>₹{preview.price?.toFixed(2)}</span>
-                    )}
-                  </p>
+
+                  <div className="related-product-info">
+                    <h3>{item.title}</h3>
+
+                    <div className="related-price">
+                      ₹{preview.salePrice?.toFixed(2)}
+                      {preview.price > preview.salePrice > 0 && (
+                        <span className="related-original-price">
+                          ₹{preview.price?.toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
                 </div>
               );
             })}

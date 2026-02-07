@@ -97,6 +97,44 @@
   color: gray;
 }
 
+.show-more-btn {
+  margin-top: 10px;
+  background: transparent;
+  border: none;
+  color: var(--logo-color);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 2px;
+}
+
+.show-more-btn:hover {
+  text-decoration: underline;
+}
+
+.spec-label{
+  text-transform: uppercase;
+}
+
+/* SHARE BUTTON */
+.share-btn {
+  margin-left: 10px;
+  font-size: 12px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.share-btn:hover {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+}
+
 @keyframes pulse {
 
   0%,
@@ -266,32 +304,35 @@
 }
 
 /* INFO */
-.related-info {
-  padding: 16px;
-  text-align: center;
-  background-color: var(--body-color);
-  flex-grow: 1;
+.related-product-info {
+    padding: 16px;
+    text-align: center;
+    background-color: var(--body-color);
 }
 
-.related-info h5 {
-  font-size: 14px;
-  color: var(--nav-item);
-  margin-bottom: 8px;
-  font-family: "Poppins", sans-serif;
+.related-product-info h3 {
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    color: var(--nav-item);
+    margin:0px !important;
+    text-align: center;
 }
 
-/* PRICE */
+/* Price */
 .related-price {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--logo-color);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--logo-color);
+    font-family: "Poppins", sans-serif;
+    margin:0px !important;
 }
 
-.related-price span {
-  margin-left: 8px;
-  font-size: 13px;
-  color: #9ca3af;
-  text-decoration: line-through;
+.related-original-price {
+    margin-left: 8px;
+    font-size: 13px;
+    color: #9ca3af;
+    text-decoration: line-through;
+    font-family: "Poppins", sans-serif;
 }
 
 /* TABLET */

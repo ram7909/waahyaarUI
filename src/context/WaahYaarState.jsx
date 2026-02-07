@@ -3,8 +3,8 @@ import axios from 'axios';
 import WaahYaarContext from './WaahYaarContext';
 
 const WaahYaarState = (props) => {
-  const apiUrl = "https://waahyaarapis.onrender.com/api";
-  //const apiUrl = "http://localhost:5000/api";
+  //const apiUrl = "https://waahyaarapis.onrender.com/api";
+  const apiUrl = "http://localhost:5000/api";
 
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
