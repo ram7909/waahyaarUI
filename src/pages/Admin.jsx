@@ -1422,7 +1422,273 @@ const Admin = () => {
         )}
 
         {/* UPDATE PRODUCT MODAL - Similar structure, skipped for brevity */}
-        {/* You can implement the update modal with the same pattern */}
+        {/* UPDATE PRODUCT MODAL */}
+        {showUpdateProductModal && (
+          <div className="modalOverlay">
+            <div className="modalContent" style={{ maxHeight: '90vh', overflowY: 'auto' }}>
+              <button className="modalClose" onClick={() => setShowUpdateProductModal(false)}>×</button>
+
+              <form onSubmit={updateProductHandler}>
+                <h3 className="formTitle">Update Product</h3>
+
+                {/* Product Type (disabled) */}
+                <div className="formGroup">
+                  <label>Product Type</label>
+                  <select value={updateProductFormData.productType} disabled>
+                    <option value="simple">Simple</option>
+                    <option value="variant">Variant</option>
+                  </select>
+                </div>
+
+                {/* Title */}
+                <div className="formGroup">
+                  <label>Title</label>
+                  <input
+                    type="text"
+                    name="title"
+                    value={updateProductFormData.title}
+                    onChange={handleUpdateProductChange}
+                    required
+                  />
+                </div>
+
+                {/* Description */}
+                <div className="formGroup">
+                  <label>Description</label>
+                  <textarea
+                    name="description"
+                    value={updateProductFormData.description}
+                    onChange={handleUpdateProductChange}
+                    required
+                  />
+                </div>
+
+                {/* Category */}
+                <div className="formGroup">
+                  <label>Category</label>
+                  <select
+                    name="category"
+                    value={updateProductFormData.category}
+                    onChange={handleUpdateProductChange}
+                    required
+                  >
+                    <option value="">Select Category</option>
+                    {categories.map(cat => (
+                      <option key={cat._id} value={cat._id}>{cat.name}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* SIMPLE PRODUCT */}
+                {updateProductFormData.productType === "simple" && (
+                  <>
+                    <div className="formGroup">
+                      <label>Price</label>
+                      <input
+                        type="number"
+                        name="price"
+                        value={updateProductFormData.price}
+                        onChange={handleUpdateProductChange}
+                        required
+                      />
+                    </div>
+
+                    <div className="formGroup">
+                      <label>Discount %</label>
+                      <input
+                        type="number"
+                        name="discountPercent"
+                        value={updateProductFormData.discountPercent}
+                        onChange={handleUpdateProductChange}
+                      />
+                    </div>
+
+                    <div className="formGroup">
+                      <label>Stock</label>
+                      <input
+                        type="number"
+                        name="stock"
+                        value={updateProductFormData.stock}
+                        onChange={handleUpdateProductChange}
+                        required
+                      />
+                    </div>
+                  </>
+                )}
+
+                {/* VARIANT PRODUCT */}
+                {updateProductFormData.productType === "variant" && (
+                  <div className="variantsSection">
+                    <h4>Device Variants</h4>
+
+                    {updateProductFormData.variants.map((variant, vIndex) => (
+                      <div key={vIndex} className="variantBlock">
+                        <div className="formGroup">
+                          <label>Device Model</label>
+                          <input
+                            type="text"
+                            value={variant.deviceModel}
+                            onChange={(e) => {
+                              const updated = [...updateProductFormData.variants];
+                              updated[vIndex].deviceModel = e.target.value;
+                              setUpdateProductFormData({ ...updateProductFormData, variants: updated });
+                            }}
+                          />
+                        </div>
+
+                        <h5>Colors</h5>
+                        {variant.colors.map((color, cIndex) => (
+                          <div key={cIndex} className="colorBlock">
+                            <input
+                              type="text"
+                              placeholder="Color Name"
+                              value={color.colorName}
+                              onChange={(e) => {
+                                const updated = [...updateProductFormData.variants];
+                                updated[vIndex].colors[cIndex].colorName = e.target.value;
+                                setUpdateProductFormData({ ...updateProductFormData, variants: updated });
+                              }}
+                            />
+
+                            <input
+                              type="number"
+                              placeholder="Price"
+                              value={color.price}
+                              onChange={(e) => {
+                                const updated = [...updateProductFormData.variants];
+                                updated[vIndex].colors[cIndex].price = e.target.value;
+                                setUpdateProductFormData({ ...updateProductFormData, variants: updated });
+                              }}
+                            />
+
+                            <input
+                              type="number"
+                              placeholder="Discount %"
+                              value={color.discountPercent}
+                              onChange={(e) => {
+                                const updated = [...updateProductFormData.variants];
+                                updated[vIndex].colors[cIndex].discountPercent = e.target.value;
+                                setUpdateProductFormData({ ...updateProductFormData, variants: updated });
+                              }}
+                            />
+
+                            <input
+                              type="number"
+                              placeholder="Stock"
+                              value={color.stock}
+                              onChange={(e) => {
+                                const updated = [...updateProductFormData.variants];
+                                updated[vIndex].colors[cIndex].stock = e.target.value;
+                                setUpdateProductFormData({ ...updateProductFormData, variants: updated });
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* FEATURES */}
+                <div className="formGroup">
+                  <label>Features</label>
+                  {updateProductFormData.features.map((feature, index) => (
+                    <input
+                      key={index}
+                      type="text"
+                      value={feature}
+                      onChange={(e) => {
+                        const updated = [...updateProductFormData.features];
+                        updated[index] = e.target.value;
+                        setUpdateProductFormData({ ...updateProductFormData, features: updated });
+                      }}
+                    />
+                  ))}
+                </div>
+
+                {/* SPECIFICATIONS */}
+                <div className="formGroup">
+                  <label>Specifications</label>
+                  <input
+                    placeholder="Brand"
+                    value={updateProductFormData.specifications.brand}
+                    onChange={(e) =>
+                      setUpdateProductFormData({
+                        ...updateProductFormData,
+                        specifications: { ...updateProductFormData.specifications, brand: e.target.value }
+                      })
+                    }
+                  />
+                  <input
+                    placeholder="Material"
+                    value={updateProductFormData.specifications.material}
+                    onChange={(e) =>
+                      setUpdateProductFormData({
+                        ...updateProductFormData,
+                        specifications: { ...updateProductFormData.specifications, material: e.target.value }
+                      })
+                    }
+                  />
+                  <input
+                    placeholder="Warranty"
+                    value={updateProductFormData.specifications.warranty}
+                    onChange={(e) =>
+                      setUpdateProductFormData({
+                        ...updateProductFormData,
+                        specifications: { ...updateProductFormData.specifications, warranty: e.target.value }
+                      })
+                    }
+                  />
+                </div>
+
+                {/* FLAGS */}
+                <div className="formGroup">
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="isBestSeller"
+                      checked={updateProductFormData.isBestSeller}
+                      onChange={handleUpdateProductChange}
+                    /> Best Seller
+                  </label>
+                </div>
+
+                <div className="formGroup">
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="isNewArrival"
+                      checked={updateProductFormData.isNewArrival}
+                      onChange={handleUpdateProductChange}
+                    /> New Arrival
+                  </label>
+                </div>
+
+                {/* IMAGES */}
+                <div className="formGroup">
+                  <label>Add New Images</label>
+                  <input type="file" multiple ref={updateProductFileRef} onChange={handleUpdateProductImages} />
+                </div>
+
+                {updateProductFormData.preview.length > 0 && (
+                  <div className="previewWrapper">
+                    {updateProductFormData.preview.map((img, index) => (
+                      <img key={index} src={img} className="imgPreview" alt="preview" />
+                    ))}
+                  </div>
+                )}
+
+                <div className="formActions">
+                  <button type="submit" className="btnAdd">Update Product</button>
+                  <button type="button" className="btnCancel" onClick={() => setShowUpdateProductModal(false)}>
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
 
         {/* DELETE PRODUCT MODAL */}
         {showDeleteProductModal && (
